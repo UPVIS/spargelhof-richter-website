@@ -1,0 +1,36 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import OrderForm from '../components/order/OrderForm';
+---
+
+<Layout 
+  title="Spargel vorbestellen | Spargelhof Richter"
+  description="Bestellen Sie frischen Spargel direkt vom Spargelhof Richter in Bad Laer. Einfach online vorbestellen und im Hofladen abholen."
+>
+  <Header />
+  
+  <main class="min-h-screen bg-gradient-to-b from-cream to-cream-dark pt-28 pb-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Hero -->
+      <div class="text-center mb-12">
+        <span class="inline-block font-body text-accent font-semibold tracking-wider uppercase text-sm mb-4">
+          Online Bestellung
+        </span>
+        <h1 class="font-display text-4xl lg:text-5xl text-brown mb-4">
+          Spargel <span class="text-primary">vorbestellen</span>
+        </h1>
+        <p class="text-brown-light font-body text-lg max-w-2xl mx-auto">
+          Jetzt vorbestellen und ganz einfach in unserem Hofladen abholen. 
+          Wir bereiten Ihre Bestellung frisch für Sie vor.
+        </p>
+      </div>
+
+      <!-- Order Form -->
+      <OrderForm client:load />
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

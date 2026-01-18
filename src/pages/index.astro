@@ -1,0 +1,24 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import FreshGuarantee from '../components/FreshGuarantee.astro';
+import Hofladen from '../components/Hofladen.astro';
+import Gallery from '../components/Gallery.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Spargelhof Richter | Frischer Spargel & Erdbeeren aus Bad Laer">
+  <Header transparent={true} />
+  <main>
+    <Hero />
+    <About />
+    <FreshGuarantee />
+    <Hofladen />
+    <Gallery />
+    <Contact />
+  </main>
+  <Footer />
+</Layout>

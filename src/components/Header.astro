@@ -1,0 +1,161 @@
+---
+interface Props {
+  transparent?: boolean;
+}
+
+const { transparent = false } = Astro.props;
+const currentPath = Astro.url.pathname;
+
+const navItems = [
+  { href: '/#ueber-uns', label: 'Über uns' },
+  { href: '/#frischegarantie', label: '24h Frischegarantie' },
+  { href: '/#hofladen', label: 'Hofladen' },
+  { href: '/#galerie', label: 'Galerie' },
+];
+---
+
+<header 
+  id="main-header"
+  class:list={[
+    'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+    transparent ? 'bg-transparent' : 'bg-cream/95 backdrop-blur-sm shadow-sm'
+  ]}
+>
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      <!-- Logo -->
+      <a href="/" class="flex items-center group">
+        <img 
+          src="https://onecdn.io/media/62bfaf78-dc06-43e4-9380-cef13cf0094b/lg2x" 
+          alt="Spargelhof Richter Logo"
+          class="h-14 w-auto transition-transform group-hover:scale-105"
+        />
+      </a>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden lg:flex items-center gap-8">
+        {navItems.map(item => (
+          <a 
+            href={item.href}
+            class="font-body text-brown hover:text-primary transition-colors relative group"
+          >
+            {item.label}
+            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
+          </a>
+        ))}
+        <a 
+          href="/#kontakt"
+          class="font-body text-brown hover:text-primary transition-colors relative group"
+        >
+          Kontakt
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
+        </a>
+      </div>
+
+      <!-- CTA Button -->
+      <div class="hidden md:block">
+        <a 
+          href="/vorbestellen"
+          class="inline-flex items-center gap-2 bg-accent hover:bg-accent-light text-white font-semibold px-6 py-3 rounded-full transition-all hover:shadow-lg hover:-translate-y-0.5"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+          </svg>
+          Jetzt vorbestellen
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button 
+        id="mobile-menu-button"
+        class="lg:hidden p-2 text-brown hover:text-primary transition-colors"
+        aria-label="Menü öffnen"
+      >
+        <svg class="w-6 h-6 menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+        <svg class="w-6 h-6 close-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="lg:hidden hidden bg-cream/98 backdrop-blur-sm border-t border-cream-dark">
+    <div class="px-4 py-6 space-y-4">
+      {navItems.map(item => (
+        <a 
+          href={item.href}
+          class="block font-body text-lg text-brown hover:text-primary transition-colors py-2"
+        >
+          {item.label}
+        </a>
+      ))}
+      <a 
+        href="/#kontakt"
+        class="block font-body text-lg text-brown hover:text-primary transition-colors py-2"
+      >
+        Kontakt
+      </a>
+      <a 
+        href="/vorbestellen"
+        class="inline-flex items-center gap-2 bg-accent hover:bg-accent-light text-white font-semibold px-6 py-3 rounded-full transition-all mt-4"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+        </svg>
+        Jetzt vorbestellen
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Mobile Menu Toggle
+  const menuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = menuButton?.querySelector('.menu-icon');
+  const closeIcon = menuButton?.querySelector('.close-icon');
+
+  menuButton?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+    menuIcon?.classList.toggle('hidden');
+    closeIcon?.classList.toggle('hidden');
+  });
+
+  // Close mobile menu when clicking a link
+  mobileMenu?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      menuIcon?.classList.remove('hidden');
+      closeIcon?.classList.add('hidden');
+    });
+  });
+
+  // Header scroll effect
+  const header = document.getElementById('main-header');
+  let lastScroll = 0;
+
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.scrollY;
+    
+    if (currentScroll > 50) {
+      header?.classList.remove('bg-transparent');
+      header?.classList.add('bg-cream/95', 'backdrop-blur-sm', 'shadow-sm');
+    } else {
+      if (header?.dataset.transparent === 'true') {
+        header?.classList.add('bg-transparent');
+        header?.classList.remove('bg-cream/95', 'backdrop-blur-sm', 'shadow-sm');
+      }
+    }
+    
+    lastScroll = currentScroll;
+  });
+</script>
+
+<style>
+  #main-header[data-transparent="true"] {
+    --header-text: white;
+  }
+</style>

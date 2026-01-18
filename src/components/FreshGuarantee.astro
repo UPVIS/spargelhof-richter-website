@@ -1,0 +1,97 @@
+---
+const features = [
+  {
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>`,
+    title: 'Maximal 24 Stunden',
+    description: 'Von der Ernte bis zu Ihnen vergehen nie mehr als 24 Stunden.'
+  },
+  {
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>`,
+    title: 'Geprüfte Qualität',
+    description: 'Jede Spargelstange wird sorgfältig geprüft und sortiert.'
+  },
+  {
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>`,
+    title: 'Kurze Lieferwege',
+    description: 'Direktlieferung aus Bad Laer – kurze Wege für maximale Frische.'
+  },
+  {
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>`,
+    title: 'Mit Leidenschaft',
+    description: 'Familientradition seit 1991 – mit Herz und Hingabe.'
+  }
+];
+---
+
+<section id="frischegarantie" class="py-24 lg:py-32 bg-cream-dark relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <!-- Image Side -->
+      <div class="relative scroll-animate">
+        <div class="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
+          <img 
+            src="https://onecdn.io/media/e25f5c69-2c0c-468e-b0ba-40aeb34bb8ff/lg2x" 
+            alt="24h Frischegarantie - Frischer Spargel"
+            class="w-full h-full object-cover"
+            loading="lazy"
+          />
+        </div>
+        <!-- Badge -->
+        <div class="absolute -top-4 -right-4 bg-accent text-white rounded-2xl p-6 shadow-xl">
+          <div class="font-display text-4xl">24h</div>
+          <div class="text-sm opacity-90">Frischegarantie</div>
+        </div>
+      </div>
+
+      <!-- Content Side -->
+      <div class="scroll-animate" style="transition-delay: 200ms;">
+        <span class="inline-block font-body text-accent font-semibold tracking-wider uppercase text-sm mb-4">
+          Unser Versprechen
+        </span>
+        <h2 class="font-display text-4xl lg:text-5xl text-brown mb-6">
+          Unsere 24h <span class="text-primary">Frischegarantie</span>
+        </h2>
+        <div class="space-y-4 text-brown-light font-body text-lg leading-relaxed mb-8">
+          <p>
+            Der Spargelhof Richter bietet eine einzigartige Frischegarantie für seine Produkte. 
+            Dank kurzer Lieferwege und schneller Logistik ist die Ware, wenn sie beim Kunden 
+            ankommt, maximal 24 Stunden alt.
+          </p>
+          <p>
+            Diese schnelle Lieferung stellt sicher, dass die Produkte stets in bester Qualität 
+            und Frische beim Kunden ankommen.
+          </p>
+        </div>
+
+        <!-- Features Grid -->
+        <div class="grid sm:grid-cols-2 gap-6">
+          {features.map((feature, index) => (
+            <div 
+              class="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow"
+            >
+              <div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <Fragment set:html={feature.icon} />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-display text-base text-brown mb-1">{feature.title}</h3>
+                <p class="text-brown-light text-sm">{feature.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <a 
+          href="/vorbestellen"
+          class="inline-flex items-center gap-2 mt-10 bg-accent hover:bg-accent-light text-white font-semibold px-8 py-4 rounded-full transition-all hover:shadow-lg hover:-translate-y-0.5"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+          </svg>
+          Zu unserem Bestellformular
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

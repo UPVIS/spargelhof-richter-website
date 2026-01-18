@@ -1,0 +1,72 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout 
+  title="Impressum | Spargelhof Richter"
+  description="Impressum und rechtliche Angaben des Spargelhof Richter in Bad Laer."
+>
+  <Header />
+  
+  <main class="min-h-screen bg-cream pt-28 pb-20">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <article class="bg-white rounded-2xl p-8 lg:p-12 shadow-lg">
+        <h1 class="font-display text-4xl text-brown mb-8">Impressum</h1>
+        
+        <div class="prose prose-lg max-w-none text-brown-light">
+          <section class="mb-8">
+            <h2 class="font-display text-2xl text-brown mb-4">Angaben gemäß § 5 TMG</h2>
+            <p class="font-body">
+              <strong class="text-brown">Spargelhof Richter GbR</strong><br>
+              Gesellschafter: Armin Richter & Karin Richter<br>
+              Warendorfer Str. 40<br>
+              49196 Bad Laer
+            </p>
+          </section>
+
+          <section class="mb-8">
+            <h2 class="font-display text-2xl text-brown mb-4">Kontakt</h2>
+            <p class="font-body">
+              E-Mail: <a href="mailto:info@spargelhof-richter.de" class="text-primary hover:text-primary-dark">info@spargelhof-richter.de</a><br>
+              Telefon: <a href="tel:054247734" class="text-primary hover:text-primary-dark">05424 7734</a>
+            </p>
+          </section>
+
+          <section class="mb-8">
+            <h2 class="font-display text-2xl text-brown mb-4">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
+            <p class="font-body">
+              Karin Richter<br>
+              Warendorfer Str. 40<br>
+              49196 Bad Laer
+            </p>
+          </section>
+
+          <section>
+            <h2 class="font-display text-2xl text-brown mb-4">Haftungsausschluss</h2>
+            <p class="font-body">
+              Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für die Inhalte 
+              externer Links. Für den Inhalt der verlinkten Seiten sind ausschließlich deren 
+              Betreiber verantwortlich.
+            </p>
+          </section>
+        </div>
+
+        <div class="mt-12 pt-8 border-t border-cream-dark">
+          <a 
+            href="/"
+            class="inline-flex items-center gap-2 text-primary hover:text-primary-dark font-semibold transition-colors"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18"/>
+            </svg>
+            Zurück zur Startseite
+          </a>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
