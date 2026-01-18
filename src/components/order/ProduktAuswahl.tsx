@@ -32,16 +32,16 @@ export default function ProduktAuswahl({
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -20 }}
       transition={{ duration: 0.3 }}
-      className="grid lg:grid-cols-2 gap-8 lg:gap-12"
+      className="max-w-xl mx-auto"
     >
-      {/* Formular-Seite */}
-      <div>
+      {/* Formular */}
+      <div className="bg-white rounded-2xl shadow-xl p-8">
         <div className="mb-8">
           <h2 className="font-['Playfair_Display'] text-3xl text-[#1F2937] mb-2">
-            Spargel vorbestellen
+            Produkte auswählen
           </h2>
           <p className="text-gray-500">
-            Jetzt vorbestellen und ganz einfach in unserem Hofladen abholen.
+            Wählen Sie Ihre gewünschten Produkte und Mengen.
           </p>
         </div>
 
@@ -125,17 +125,6 @@ export default function ProduktAuswahl({
             Bitte wählen Sie mindestens ein Produkt aus.
           </p>
         )}
-      </div>
-
-      {/* Bild-Seite */}
-      <div className="hidden lg:block relative">
-        <div className="sticky top-8">
-          <img
-            src="https://onecdn.io/media/e25f5c69-2c0c-468e-b0ba-40aeb34bb8ff/lg2x"
-            alt="Frischer Spargel"
-            className="w-full h-auto rounded-2xl shadow-xl object-cover"
-          />
-        </div>
       </div>
     </motion.div>
   );

@@ -3,26 +3,22 @@ const products = [
   {
     name: 'Weißer Spargel',
     description: 'Der Klassiker – zart und mild im Geschmack',
-    badge: 'Bestseller',
-    image: 'https://images.unsplash.com/photo-1515471209610-dae1c92d8777?w=400&h=300&fit=crop'
+    image: 'https://onecdn.io/media/6a8e7882-56ed-459b-8377-24b699a342f6/lg2x'
   },
   {
     name: 'Violetter Spargel',
     description: 'Intensiver und würziger als der weiße',
-    badge: 'Beliebt',
-    image: 'https://images.unsplash.com/photo-1432139555190-58524dae6a55?w=400&h=300&fit=crop'
+    image: 'https://onecdn.io/media/c4e49a93-ec5d-4e02-88bf-d364a5e18e20/lg2x'
   },
   {
     name: 'Grünspargel',
     description: 'Kräftig im Geschmack, schnell zubereitet',
-    badge: null,
-    image: 'https://images.unsplash.com/photo-1506807803488-8eafc15316c7?w=400&h=300&fit=crop'
+    image: 'https://onecdn.io/media/3d809249-7b33-4d91-bbdd-15a588fc6009/lg2x'
   },
   {
     name: 'Frische Erdbeeren',
     description: 'Süß, saftig und direkt vom Feld',
-    badge: 'Saison',
-    image: 'https://images.unsplash.com/photo-1464965911861-746a04b4bca6?w=400&h=300&fit=crop'
+    image: 'https://onecdn.io/media/96aa632b-93db-4900-908d-af97bd62205f/lg2x'
   }
 ];
 ---
@@ -32,7 +28,7 @@ const products = [
     <!-- Header -->
     <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-16">
       <div class="scroll-animate">
-        <span class="inline-block font-body text-accent font-semibold tracking-wider uppercase text-sm mb-4">
+        <span class="inline-block font-body text-primary font-semibold tracking-wider uppercase text-sm mb-4">
           Unser Sortiment
         </span>
         <h2 class="font-display text-4xl lg:text-5xl text-brown">
@@ -66,11 +62,6 @@ const products = [
               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               loading="lazy"
             />
-            {product.badge && (
-              <span class="absolute top-4 left-4 bg-accent text-white text-xs font-semibold px-3 py-1 rounded-full">
-                {product.badge}
-              </span>
-            )}
           </div>
           <div class="p-6">
             <h3 class="font-display text-xl text-brown mb-2 group-hover:text-primary transition-colors">

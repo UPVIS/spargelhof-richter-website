@@ -52,6 +52,7 @@ export default function KontaktFormular({
       transition={{ duration: 0.3 }}
       className="max-w-xl mx-auto"
     >
+      <div className="bg-white rounded-2xl shadow-xl p-8">
       <div className="mb-8 text-center">
         <h2 className="font-['Playfair_Display'] text-3xl text-[#1F2937] mb-2">
           Kontaktdaten eingeben
@@ -225,6 +226,7 @@ export default function KontaktFormular({
             </>
           )}
         </button>
+      </div>
       </div>
     </motion.div>
   );

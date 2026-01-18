@@ -30,8 +30,9 @@ export default function Bestaetigung({
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
-      className="text-center py-12 max-w-lg mx-auto"
+      className="text-center max-w-lg mx-auto"
     >
+      <div className="bg-white rounded-2xl shadow-xl p-8 py-12">
       <motion.div
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
@@ -96,6 +97,7 @@ export default function Bestaetigung({
           Zurück zur Startseite
         </a>
       </motion.div>
+      </div>
     </motion.div>
   );
 }
