@@ -26,7 +26,7 @@ const navItems = [
       <!-- Logo -->
       <a href="/" class="flex items-center group">
         <img 
-          src="https://onecdn.io/media/62bfaf78-dc06-43e4-9380-cef13cf0094b/lg2x" 
+          src="https://onecdn.io/media/06b81210-7944-4581-8eb5-2a222c4fdadd/md2x" 
           alt="Spargelhof Richter Logo"
           class="h-14 w-auto transition-transform group-hover:scale-105"
         />
@@ -52,17 +52,24 @@ const navItems = [
         </a>
       </div>
 
-      <!-- CTA Button -->
-      <div class="hidden md:block">
+      <!-- CTA Buttons -->
+      <div class="hidden md:flex items-center gap-3">
         <a 
-          href="/vorbestellen"
-          class="inline-flex items-center gap-2 bg-accent hover:bg-accent-light text-white font-semibold px-6 py-3 rounded-full transition-all hover:shadow-lg hover:-translate-y-0.5"
+          href="/#kontakt"
+          class="inline-flex items-center gap-2 border-2 border-brown/30 hover:border-primary text-brown hover:text-primary font-semibold px-5 py-2.5 rounded-full transition-all hover:shadow-md"
+        >
+          Kontakt
+        </a>
+        <span 
+          class="inline-flex items-center gap-2 bg-gray-300 text-gray-500 font-semibold px-6 py-3 rounded-full cursor-not-allowed select-none"
+          title="Coming soon – sobald die Saison startet"
         >
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
           </svg>
-          Jetzt vorbestellen
-        </a>
+          Vorbestellen
+          <span class="text-xs bg-gray-400/50 text-white px-2 py-0.5 rounded-full ml-1">Soon</span>
+        </span>
       </div>
 
       <!-- Mobile Menu Button -->
@@ -98,15 +105,23 @@ const navItems = [
       >
         Kontakt
       </a>
-      <a 
-        href="/vorbestellen"
-        class="inline-flex items-center gap-2 bg-accent hover:bg-accent-light text-white font-semibold px-6 py-3 rounded-full transition-all mt-4"
-      >
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
-        </svg>
-        Jetzt vorbestellen
-      </a>
+      <div class="flex flex-col gap-3 mt-4">
+        <a 
+          href="/#kontakt"
+          class="inline-flex items-center justify-center gap-2 border-2 border-brown/30 hover:border-primary text-brown hover:text-primary font-semibold px-6 py-3 rounded-full transition-all"
+        >
+          Kontakt aufnehmen
+        </a>
+        <span 
+          class="inline-flex items-center justify-center gap-2 bg-gray-300 text-gray-500 font-semibold px-6 py-3 rounded-full cursor-not-allowed select-none"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+          </svg>
+          Vorbestellen
+          <span class="text-xs bg-gray-400/50 text-white px-2 py-0.5 rounded-full ml-1">Soon</span>
+        </span>
+      </div>
     </div>
   </div>
 </header>
