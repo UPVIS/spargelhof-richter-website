@@ -45,7 +45,16 @@ const navItems = [
       </div>
 
       <!-- CTA Buttons -->
-      <div class="hidden md:flex items-center gap-3">
+      <div class="hidden md:flex items-center gap-2">
+        <button 
+          id="imagefilm-btn"
+          class="inline-flex items-center gap-2 border-2 border-primary/30 hover:border-primary text-primary hover:bg-primary/5 font-semibold px-5 py-2.5 rounded-full transition-all hover:shadow-md"
+        >
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+          Imagefilm
+        </button>
         <a 
           href="/#kontakt"
           class="inline-flex items-center gap-2 border-2 border-brown/30 hover:border-primary text-brown hover:text-primary font-semibold px-5 py-2.5 rounded-full transition-all hover:shadow-md"
@@ -53,10 +62,10 @@ const navItems = [
           Kontakt
         </a>
         <span 
-          class="inline-flex items-center gap-2 bg-gray-300 text-gray-500 font-semibold px-6 py-3 rounded-full cursor-not-allowed select-none"
+          class="inline-flex items-center gap-2 bg-gray-300 text-gray-500 font-semibold px-5 py-2.5 rounded-full cursor-not-allowed select-none"
           title="Coming soon – sobald die Saison startet"
         >
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
           </svg>
           Vorbestellen
@@ -98,6 +107,14 @@ const navItems = [
         Kontakt
       </a>
       <div class="flex flex-col gap-3 mt-4">
+        <button 
+          class="imagefilm-trigger inline-flex items-center justify-center gap-2 border-2 border-primary/30 hover:border-primary text-primary font-semibold px-6 py-3 rounded-full transition-all"
+        >
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+          Imagefilm abspielen
+        </button>
         <a 
           href="/#kontakt"
           class="inline-flex items-center justify-center gap-2 border-2 border-brown/30 hover:border-primary text-brown hover:text-primary font-semibold px-6 py-3 rounded-full transition-all"
@@ -141,5 +158,67 @@ const navItems = [
   });
 
   // Header is always visible with solid background
+
+  // Video Lightbox
+  const imagefilmBtn = document.getElementById('imagefilm-btn');
+  const lightbox = document.getElementById('video-lightbox');
+  const lightboxClose = document.getElementById('lightbox-close');
+  const lightboxOverlay = document.getElementById('lightbox-overlay');
+  const lightboxIframe = document.getElementById('lightbox-iframe');
+
+  function openLightbox() {
+    if (lightbox && lightboxIframe) {
+      lightboxIframe.src = 'https://www.youtube.com/embed/j4PG5rS9YDY?autoplay=1&start=18&rel=0&modestbranding=1';
+      lightbox.classList.remove('hidden');
+      lightbox.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeLightbox() {
+    if (lightbox && lightboxIframe) {
+      lightboxIframe.src = '';
+      lightbox.classList.add('hidden');
+      lightbox.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+  }
+
+  imagefilmBtn?.addEventListener('click', openLightbox);
+  document.querySelectorAll('.imagefilm-trigger').forEach(function(btn) {
+    btn.addEventListener('click', openLightbox);
+  });
+  lightboxClose?.addEventListener('click', closeLightbox);
+  lightboxOverlay?.addEventListener('click', closeLightbox);
+  
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeLightbox();
+  });
 </script>
 
+<!-- Video Lightbox -->
+<div id="video-lightbox" class="hidden fixed inset-0 z-[100] items-center justify-center">
+  <div id="lightbox-overlay" class="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
+  <div class="relative z-10 w-full max-w-4xl mx-4">
+    <button 
+      id="lightbox-close"
+      class="absolute -top-12 right-0 text-white/80 hover:text-white transition-colors"
+      aria-label="Video schließen"
+    >
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+    <div class="relative w-full" style="padding-bottom: 56.25%;">
+      <iframe 
+        id="lightbox-iframe"
+        class="absolute inset-0 w-full h-full rounded-2xl shadow-2xl"
+        src=""
+        title="Spargelhof Richter Imagefilm"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </div>
+</div>
