@@ -95,16 +95,85 @@ const features = [
       </div>
     </div>
 
-    <!-- Bild-Seite -->
-    <div class="relative min-h-[400px] lg:min-h-full scroll-animate">
+    <!-- Video-Seite -->
+    <div class="relative min-h-[400px] lg:min-h-full scroll-animate overflow-hidden">
+      <!-- YouTube Player Container -->
+      <div class="absolute inset-0 pointer-events-none">
+        <div id="yt-guarantee-player" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] min-w-full h-[56.25vw] min-h-full"></div>
+      </div>
+      <!-- Fallback Image (visible until video loads) -->
       <img 
+        id="guarantee-fallback"
         src="https://onecdn.io/media/e25f5c69-2c0c-468e-b0ba-40aeb34bb8ff/lg2x" 
         alt="24h Frischegarantie - Frischer Spargel"
-        class="absolute inset-0 w-full h-full object-cover"
+        class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000"
         loading="lazy"
       />
       <!-- Grüner Overlay-Gradient für Übergang -->
-      <div class="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-primary to-transparent hidden lg:block"></div>
+      <div class="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-primary to-transparent hidden lg:block z-10"></div>
     </div>
   </div>
 </section>
+
+<script is:inline>
+  // Wait for YouTube API (loaded by Hero) then create second player
+  function initGuaranteePlayer() {
+    if (typeof YT !== 'undefined' && YT.Player) {
+      new YT.Player('yt-guarantee-player', {
+        videoId: 'j4PG5rS9YDY',
+        playerVars: {
+          autoplay: 1,
+          mute: 1,
+          controls: 0,
+          loop: 1,
+          playlist: 'j4PG5rS9YDY',
+          start: 0,
+          playsinline: 1,
+          showinfo: 0,
+          rel: 0,
+          modestbranding: 1,
+          disablekb: 1,
+          fs: 0,
+          iv_load_policy: 3,
+          origin: window.location.origin
+        },
+        events: {
+          onReady: function(event) {
+            event.target.mute();
+            event.target.playVideo();
+            var fallback = document.getElementById('guarantee-fallback');
+            if (fallback) {
+              fallback.style.opacity = '0';
+              setTimeout(function() { fallback.style.display = 'none'; }, 1000);
+            }
+          },
+          onStateChange: function(event) {
+            if (event.data === YT.PlayerState.ENDED) {
+              event.target.seekTo(0);
+              event.target.playVideo();
+            }
+            if (event.data === YT.PlayerState.PAUSED) {
+              event.target.playVideo();
+            }
+          }
+        }
+      });
+    } else {
+      setTimeout(initGuaranteePlayer, 500);
+    }
+  }
+  
+  // Use IntersectionObserver to only load video when section is near viewport
+  var guaranteeSection = document.getElementById('frischegarantie');
+  if (guaranteeSection) {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          initGuaranteePlayer();
+          observer.disconnect();
+        }
+      });
+    }, { rootMargin: '200px' });
+    observer.observe(guaranteeSection);
+  }
+</script>
