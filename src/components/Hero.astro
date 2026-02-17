@@ -5,9 +5,9 @@
   <!-- YouTube Video Background -->
   <div class="absolute inset-0 w-full h-full overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-br from-primary/80 via-primary/70 to-primary-dark/80 z-10"></div>
-    <!-- YouTube Player Container -->
-    <div id="yt-player-container" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none" style="width: 200%; height: 200%; min-width: 100vw; min-height: 100vh;">
-      <div id="yt-player" class="w-full h-full"></div>
+    <!-- YouTube Player Container - covers full area, aligned to top -->
+    <div id="yt-player-container" class="absolute inset-0 pointer-events-none">
+      <div id="yt-player" class="absolute top-0 left-1/2 -translate-x-1/2 w-[177.78vh] min-w-full h-full min-h-[56.25vw]"></div>
     </div>
     <!-- Fallback Image (visible until video loads) -->
     <img 
